@@ -1,6 +1,6 @@
 # Implement the next steps for the actual Go-Hugo website's source code
 build:
-	@hugo -v
+	@hugo
 
 clean:
 	@rm -rf dist/*
