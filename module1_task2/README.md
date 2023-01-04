@@ -9,7 +9,7 @@ Welcome to our site, please follow the next information in order to have a worki
 - The website is expected to be generated into ./dist folder but this folder should be **absent** from the repo.
 
 ## Lifecycle
-- Post
-- Build
-- Clean
-- Help
+- post
+- build
+- clean
+- help
