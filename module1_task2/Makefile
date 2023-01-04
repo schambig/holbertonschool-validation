@@ -1,5 +1,4 @@
 # Implement the next steps for the actual Go-Hugo website's source code
-.PHONY build clean post help
 build: ## Generate the website from markdown and config files in the 'dist/' folder
 	@hugo
 
