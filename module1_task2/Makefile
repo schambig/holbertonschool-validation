@@ -14,6 +14,6 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 help: ## Show this help usage
 	@echo "Usage: make <command>"
 	@echo "	build:	Generate the website from markdown in 'dist/' folder"
-	@echo "	clean:	Cleanup the content of the 'dist/' folder"
+	@echo "	clean:	Delete the content of the 'dist/' folder"
 	@echo "	post:	Create a new blog post entry"
-	@echo "	help:	Show info about each markdown rule"
+	@echo "	help:	Show info about each makefile rule"
