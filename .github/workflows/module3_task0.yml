@@ -1,6 +1,6 @@
 # Continuous Integration with GitHub Actions
 
-name: CI_module3_task0
+name: module3_task0
 
 # Controls when the workflow will run
 on:
