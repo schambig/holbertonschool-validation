@@ -30,6 +30,7 @@ jobs:
         run: |
           cd module3_task1/
           ./setup.sh
+
       # Go to the right folder and execute 'make build'
       - name: Build the application
         run: |
