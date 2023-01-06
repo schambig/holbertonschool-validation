@@ -13,3 +13,7 @@ Welcome to our site, please follow the next information in order to have a worki
 - build
 - clean
 - help
+
+## Workflow
+- Clone the repository
+- Change to the appropriate directory and execute `make help`
