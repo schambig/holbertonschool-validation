@@ -15,5 +15,5 @@ Welcome to our site, please follow the next information in order to have a worki
 - help
 
 ## Build Workflow
-- The workflow is executed into an Ubuntu 18.04
+- The workflow is executed into an Ubuntu 18.04 execution environment
 - Required tools are installed prior to any `make` target, by executing the script `setup.sh`
