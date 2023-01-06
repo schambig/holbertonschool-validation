@@ -14,6 +14,6 @@ Welcome to our site, please follow the next information in order to have a worki
 - clean
 - help
 
-## Workflow
-- Clone the repository
-- Change to the appropriate directory and execute `make help`
+## Build Workflow
+- The workflow is executed into an Ubuntu 18.04
+- Required tools are installed prior to any `make` target, by executing the script `setup.sh`
