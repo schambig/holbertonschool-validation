@@ -20,12 +20,12 @@ jobs:
     # Steps represent sequence of tasks that will be executed as par of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE
-      # so your job can access it
+      # so the job can access it
       - name: Clone the repository
         uses: actions/checkout@v3
 
-      # Go to the right folder and execute 'make help'
-      - name: Execute the make help command
+      # Go to the right folder and execute 'make build'
+      - name: Build the application
         run: |
           cd module3_task1/
           make build
