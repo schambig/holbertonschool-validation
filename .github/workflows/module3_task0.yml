@@ -6,7 +6,7 @@ name: module3_task0
 on:
   # Triggers the workflow on push or once per day at midnight
   push:
-    paths: '[module3_task0/**]'
+    paths: ['module3_task0/**']
   schedule:
     - cron: '0 0 * * *'
 
