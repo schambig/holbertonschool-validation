@@ -27,5 +27,5 @@ jobs:
       # Go to the right folder and execute 'make help'
       - name: Execute the make help command
         run: |
-          cd module3_task0/
+          cd module3_task1/
           make build
