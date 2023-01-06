@@ -6,7 +6,7 @@ name: module3_task1
 on:
   # Triggers the workflow on push or once per day at midnight
   push:
-    paths: 
+    paths:
       - 'module3_task1/**'
   schedule:
     - cron: '0 0 * * *'
@@ -24,7 +24,7 @@ jobs:
       # so the job can access it
       - name: Clone the repository
         uses: actions/checkout@v3
-        
+
       # Ensure all the required tools are installed prior to any make target
       - name: Execute the script setup.sh
         run: |
