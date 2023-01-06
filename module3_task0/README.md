@@ -15,5 +15,5 @@ Welcome to our site, please follow the next information in order to have a worki
 - help
 
 ## Workflow
-- Clone the repository
+- Clone the repository (checkout)
 - Change to the appropriate directory and execute `make help`
