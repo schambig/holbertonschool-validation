@@ -18,6 +18,11 @@ should be **absent** from the repo.
 - post
 - build
 - clean
+- package
+- lint
+- unit-tests
+- integration-tests
+- validation
 - help
 
 ## Build Workflow
