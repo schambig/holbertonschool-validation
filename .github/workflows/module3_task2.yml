@@ -1,0 +1,52 @@
+# Earlier Feedback with Continuous Delivery
+
+name: module3_task2
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or once per day at midnight
+  push:
+    #branches: [master]
+    paths:
+      - 'module3_task2/**'
+  schedule:
+    - cron: '0 0 * * *'
+
+# Jobs has five steps
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-18.04
+
+    # Steps represent sequence of tasks that will be executed as par of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      # so the job can access it
+      - name: Clone the repository
+        uses: actions/checkout@v3
+
+      # Ensure all the required tools are installed prior to any make target
+      - name: Execute the script setup.sh
+        run: |
+          cd module3_task2/
+          ./setup.sh
+          
+      # Go to the right folder and execute 'make build'
+      - name: Build the application
+        run: |
+          cd module3_task2/
+          make build
+      
+      # Produce a zip file containing the dist folder
+      - name: Archive the dist folder inside a zip file
+        run: |
+          cd module3_task2/
+          make package
+      
+      # Archive the zip file as artifact
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Archive awesome-website.zip as artifact
+          path: module3_task2/awesome-website.zip
