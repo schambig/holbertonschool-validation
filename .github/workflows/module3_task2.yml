@@ -44,6 +44,13 @@ jobs:
       - name: Archive the dist folder inside a zip file
         run: make package -C module3_task2/
 
+      # Additional steps form past module
+      - name: Run additional make rules
+        run: |
+          make unit-tests -C module3_task2/
+          make integration-tests -C module3_task2/
+          make validate -C module3_task2/
+
       # Archive the zip file as artifact
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
