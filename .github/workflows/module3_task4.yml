@@ -10,7 +10,7 @@ on:
     # paths:
       # - 'module3_task3/**'
     tags:
-      - '1.0.0'
+      - '*.*.*'
   schedule:
     - cron: '0 0 * * *'
 
