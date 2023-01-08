@@ -6,9 +6,9 @@ name: module3_task3
 on:
   # Triggers the workflow on push or once per day at midnight
   push:
-    # branches: [master]
-    paths:
-      - 'module3_task3/**'
+    branches: [master]
+    # paths:
+      # - 'module3_task3/**'
     tags:
       - '1.0.0'
   schedule:
