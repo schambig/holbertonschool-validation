@@ -27,6 +27,6 @@ should be **absent** from the repo.
 
 ## Build Workflow
 
-- The workflow is executed into an Ubuntu 18.04 execution environment
+- The workflow is executed into an Ubuntu 18.04 environment
 - Required tools are installed prior to any `make` target, by executing the
 script `setup.sh`
