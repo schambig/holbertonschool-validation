@@ -27,4 +27,4 @@ validate: ## Validate the project
 help: ## Show this help usage
 	@echo "Usage: make <command>"
 	@echo "-----"
-	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
+	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -9
