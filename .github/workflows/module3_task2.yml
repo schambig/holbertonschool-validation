@@ -28,7 +28,9 @@ jobs:
 
       # Ensure all the required tools are installed prior to any make target
       - name: Execute the script setup.sh
-        run: cd module3_task2/ && ./setup.sh
+        run: |
+          cd module3_task2/
+          ./setup.sh
 
       # Check syntax on markdown files
       - name: Run markdownlint on markdown files
@@ -40,7 +42,7 @@ jobs:
 
       # Produce a zip file containing the dist folder
       - name: Archive the dist folder inside a zip file
-        run: make package -C cd module3_task2/
+        run: make package -C module3_task2/
 
       # Archive the zip file as artifact
       - name: Archive code coverage results
