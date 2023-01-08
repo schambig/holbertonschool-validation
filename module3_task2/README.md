@@ -22,7 +22,7 @@ should be **absent** from the repo.
 - lint
 - unit-tests
 - integration-tests
-- validation
+- validate
 - help
 
 ## Build Workflow
