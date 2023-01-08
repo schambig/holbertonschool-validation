@@ -14,19 +14,13 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-  pull_request_target:
-    types: [closed]
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
 
 # Jobs has eight steps
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # Run the workflow when a pull request merges
-    if: >
-      github.event.name == 'pull_request' &&
-      github.event.action == 'closed' &&
-      github.event.pull_request.merged == true
-
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
 
