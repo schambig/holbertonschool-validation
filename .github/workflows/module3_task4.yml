@@ -8,9 +8,9 @@ on:
   push:
     branches: [master]
     # paths:
-      # - 'module3_task3/**'
-    # tags:
-      # - '*.*.*'
+      # - 'module3_task3/**' 
+    tags:
+       - '*.*.*'
   schedule:
     - cron: '0 0 * * *'
 
@@ -67,9 +67,9 @@ jobs:
       - name: Create a GitHub Release
         uses: softprops/action-gh-release@v1
         # if: github.event.pull_request
-        # if: startsWith(github.ref, 'refs/tags/1.0.9')
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          tag_name: 1.0.17
+          # tag_name: 1.0.17
           files: |
             module3_task4/awesome-website.zip
             module3_task4/DEPLOY.md
