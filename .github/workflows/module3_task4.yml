@@ -8,9 +8,9 @@ on:
   push:
     branches: [master]
     # paths:
-      # - 'module3_task3/**' 
+      # - 'module3_task3/**'
     tags:
-       - '*.*.*'
+      - '*.*.*'
   schedule:
     - cron: '0 0 * * *'
 
