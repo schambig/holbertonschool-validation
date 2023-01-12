@@ -18,5 +18,8 @@ make build
 sudo apt-get remove golang-go
 rm -rf /usr/local/go
 
-# Delete dist folder
+# Clean environment files and directory
 rm -rf dist/
+rm awesome-api
+rm coverage-units.out
+rm coverage-integrations.out
