@@ -13,3 +13,6 @@ npm install -g markdownlint-cli -y
 
 # Generate a Go-Hugo website
 make build
+
+# Uninstall go
+sudo apt-get remove golang-go
