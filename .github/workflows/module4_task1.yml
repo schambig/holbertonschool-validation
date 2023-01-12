@@ -1,0 +1,93 @@
+---
+# Safer Collaboration with Pull Requests
+
+name: module4_task0
+
+# Controls when the workflow will run
+on:
+  # Triggers of the workflow
+  push:
+    branches: [master, main]
+    # paths:
+    # - 'module4_task0/**'
+    tags:
+      - '*.*.*'
+  schedule:
+    - cron: '0 0 * * *'
+
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+
+# Jobs has eight steps
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-18.04
+
+    # Steps represent sequence of tasks that will be executed as par of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      # so the job can access it
+      - name: Clone the repository
+        uses: actions/checkout@v3
+
+      # Ensure all the required tools are installed prior to any make target
+      - name: Execute the script setup.sh
+        run: |
+          cd module4_task0/
+          ./setup.sh
+
+      # Check syntax on markdown files
+      - name: Run markdownlint on markdown files
+        run: make lint -C module4_task0/
+
+      # Go to the right folder and execute 'make build'
+      - name: Build the application
+        run: make build -C module4_task0/
+
+      # Produce a zip file containing the dist folder
+      - name: Archive the dist folder inside a zip file
+        run: make package -C module4_task0/
+
+      # Additional steps form past module
+      - name: Run additional make rules
+        run: |
+          make unit-tests -C module4_task0/
+          make integration-tests -C module4_task0/
+          make validate -C module4_task0/
+
+      # Archive the zip file as artifact
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Archive awesome-website.zip as artifact
+          path: module4_task0/awesome-website.zip
+
+      # Generate a release with the archive and the content of DEPLOY.md
+      - name: Create a GitHub Release
+        uses: softprops/action-gh-release@v1
+        # if: github.event.pull_request
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          # tag_name: 1.0.xx
+          files: |
+            module4_task0/awesome-website.zip
+            module4_task0/DEPLOY.md
+          # body_path: module3_task3/DEPLOY.md
+
+      # Deploy a new site on Netlify
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: 'module4_task0/dist'
+          production-branch: master
+          github-token: ${{ secrets.REPO_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
