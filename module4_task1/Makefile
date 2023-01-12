@@ -27,6 +27,9 @@ integration-tests: ## Run integration-tests of the project
 
 validate: ## Validate the project
 
+build-docker: ## Define a docekr image
+	@docker build -t awesome:build -f build/Dockerfile
+
 help: ## Show this help usage
 	@echo "Usage: make <command>"
 	@echo "-----"
