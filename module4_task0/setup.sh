@@ -5,7 +5,7 @@ apt-get update && apt-get install -y make wget
 wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz
 tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo
 mv hugo /usr/local/bin/
-rm hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null
+rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz || true
 
 # Install markdownlint and zip tools
 apt-get install zip -y
@@ -16,10 +16,10 @@ make build
 
 # Uninstall go
 sudo apt-get remove golang-go
-rm -rf /usr/local/go 2> /dev/null
+rm -rf /usr/local/go || true
 
 # Clean environment files and directory
 rm -rf dist/ 2> /dev/null
-rm awesome-api 2> /dev/null
-rm coverage-units.out 2> /dev/null
-rm coverage-integrations.out 2> /dev/null
+rm -f awesome-api || true
+rm -f coverage-units.out || true
+rm -f coverage-integrations.out || true
