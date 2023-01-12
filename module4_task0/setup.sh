@@ -16,3 +16,4 @@ make build
 
 # Uninstall go
 sudo apt-get remove golang-go
+rm -rf /usr/local/go
