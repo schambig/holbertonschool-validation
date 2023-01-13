@@ -32,30 +32,18 @@ jobs:
       - name: Clone the repository
         uses: actions/checkout@v3
 
-      # Ensure all the required tools are installed prior to any make target
-      - name: Execute the script setup.sh
+      # Spin up a docker container
+      - name: Spin up a docker container
         run: |
           cd module4_task1/
-          ./setup.sh
-
-      # Check syntax on markdown files
-      - name: Run markdownlint on markdown files
-        run: make lint -C module4_task1/
-
-      # Go to the right folder and execute 'make build'
-      - name: Build the application
-        run: make build -C module4_task1/
-
-      # Produce a zip file containing the dist folder
-      - name: Archive the dist folder inside a zip file
-        run: make package -C module4_task1/
-
-      # Additional steps form past module
-      - name: Run additional make rules
-        run: |
-          make unit-tests -C module4_task1/
-          make integration-tests -C module4_task1/
-          make validate -C module4_task1/
+          make build-docker
+          make lint
+          make clean
+          make build
+          make package
+          make unit-tests
+          make integration-tests
+          make validate
 
       # Archive the zip file as artifact
       - name: Archive code coverage results
