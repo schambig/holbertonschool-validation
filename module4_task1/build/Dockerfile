@@ -1,5 +1,8 @@
 FROM golang:1.15.8-buster
 
+RUN node --version
+RUN npm --version
+RUN nvm --version
 RUN apt-get update
 RUN apt install -y make wget zip
 RUN wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz
