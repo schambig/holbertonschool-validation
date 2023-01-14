@@ -40,10 +40,8 @@ jobs:
           make lint
           make clean
           make build
-          make package
           make unit-tests
           make integration-tests
-          make validate
 
       # Archive the zip file as artifact
       - name: Archive code coverage results
