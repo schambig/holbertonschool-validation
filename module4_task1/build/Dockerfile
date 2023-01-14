@@ -1,21 +1,18 @@
 FROM golang:1.15.8-buster
 
-COPY . .
-RUN apt-get update
-ENV NODE_VERSION=16.13.0
-RUN apt install -y curl zip
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN node --version
-RUN npm --version
-RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb -o hugo.deb
-RUN test -e /tmp/hugo.deb && dpkg -i /tmp/hugo.deb || echo 'File not found'
-RUN npm install -g markdownlint-cli
-RUN apt-get update -y && apt-get install -y docker.io
-RUN apt-get install -y python3-pip
-RUN pip3 install awscli
-RUN apt-get install -y jq
+WORKDIR /app
+COPY . /app
+RUN apt-get update && apt-get install --no-install-recommends -y wget=1.20.3 zip=3.0 make=4.2.1 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN wget -q https://nodejs.org/dist/v18.13.0/node-v18.13.0-linux-x64.tar.xz && \
+    tar -xvf node-v18.13.0-linux-x64.tar.xz node && \
+    chmod 744 node && \
+    mv node /usr/bin/ && \
+    rm -f node-v18.13.0-linux-x64.tar.xz 2> /dev/null
+RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz && \
+    tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo && \
+    chmod 744 hugo && \
+    mv hugo /usr/local/bin/ && \
+    rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null
+RUN npm install -g markdownlint-cli@0.33.0 -y && \
+    docker images
