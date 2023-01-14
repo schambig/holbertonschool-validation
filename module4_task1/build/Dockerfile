@@ -3,10 +3,11 @@ FROM golang:1.15.8-buster
 WORKDIR /app
 COPY . /app
 RUN tar --version
-RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils && \
+RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils=5.2.4-1+deb10u1 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN wget -q https://nodejs.org/dist/v18.13.0/node-v18.13.0-linux-x64.tar.xz && \
-    tar -xvf node-v18.13.0-linux-x64.tar.xz node && \
+    tar -xvf node-v18.13.0-linux-x64.tar.xz && \
+    mv node-v18.13.0-linux-x64.tar.xz node && \
     chmod 744 node && \
     mv node /usr/bin/ && \
     rm -f node-v18.13.0-linux-x64.tar.xz 2> /dev/null
