@@ -3,9 +3,7 @@ FROM golang:1.15.8-buster
 WORKDIR /app
 COPY . /app
 RUN wget -q --version && \
-    make --version
-RUN apt-get update && apt-get install --no-install-recommends -y make=4.2.1-1.2 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    zip --version
 RUN wget -q https://nodejs.org/dist/v18.13.0/node-v18.13.0-linux-x64.tar.xz && \
     tar -xvf node-v18.13.0-linux-x64.tar.xz node && \
     chmod 744 node && \
