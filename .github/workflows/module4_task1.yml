@@ -37,8 +37,8 @@ jobs:
         run: |
           cd module4_task1/
           make build-docker
-          make lint
           make clean
+          make lint
           make build
           make unit-tests
           make integration-tests
