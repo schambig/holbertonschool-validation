@@ -1,5 +1,6 @@
 FROM golang:1.15.8-buster
 FROM node:16
+FROM docker:20
 
 WORKDIR /app
 COPY . /app
@@ -16,5 +17,9 @@ RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_ext
     chmod 744 hugo && \
     mv hugo /usr/local/bin/ && \
     rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null
-RUN npm install -g markdownlint-cli@0.33.0 -y && \
-    docker images
+RUN npm install -g markdownlint-cli@0.33.0 -y
+RUN node --version && \
+    npm --version && \
+    markdownlint --version && \
+    hugo --version && \
+    docker --version
