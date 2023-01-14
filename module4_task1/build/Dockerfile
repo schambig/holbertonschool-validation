@@ -2,8 +2,10 @@ FROM golang:1.15.8-buster
 
 WORKDIR /app
 COPY . /app
-RUN wget -q --version
-RUN apt-get update && apt-get install --no-install-recommends -y wget=1.20.3-1ubuntu2 zip=3.0-11build1 make=4.2.1-1.2 && \
+RUN wget -q --version && \
+    zip --version && \
+    make --version
+RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11build1 make=4.2.1-1.2 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN wget -q https://nodejs.org/dist/v18.13.0/node-v18.13.0-linux-x64.tar.xz && \
     tar -xvf node-v18.13.0-linux-x64.tar.xz node && \
