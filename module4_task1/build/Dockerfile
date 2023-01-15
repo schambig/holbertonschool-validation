@@ -9,6 +9,7 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | 
     nvm install 16.16.0 &&\
     nvm alias default 16.16.0 &&\
     nvm use default
+ENV PATH="/root/.nvm/versions/node/v16.16.0/bin/:${PATH}"
 RUN node --version && npm --version
 RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz &&\
     tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo &&\
