@@ -10,8 +10,9 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | 
     nvm alias default 16.13.0 &&\
     nvm use default
 RUN echo $PATH
-RUN echo 'export PATH="/root/.nvm/versions/node/v16.13.0/bin:${PATH}"' >> ~/.bashrc &&\
+ENV 'PATH="/usr/local/bin/.nvm/versions/node/v16.13.0/bin:${PATH}"' >> ~/.bashrc &&\
     sh ~/.bashrc
+RUN echo $PATH    
 RUN node --version && npm --version
 RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz &&\
     tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo &&\
