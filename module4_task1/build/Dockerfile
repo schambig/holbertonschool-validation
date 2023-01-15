@@ -4,13 +4,13 @@ WORKDIR /app
 COPY . /app
 RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils=5.2.4-1+deb10u1 -y &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash &&\
-    . /root/.nvm/nvm.sh &&\
-    nvm install 16.13.0 &&\
-    nvm alias default 16.13.0 &&\
-    nvm use default
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install 16.13.0 &&\
+    . "$NVM_DIR/nvm.sh" && nvm alias default 16.13.0 &&\
+    . "$NVM_DIR/nvm.sh" && nvm use default
 RUN echo $PATH
-ENV 'PATH="/usr/local/bin/.nvm/versions/node/v16.13.0/bin:${PATH}"' >> ~/.bashrc &&\
+ENV 'PATH="/root/.nvm/versions/node/v16.13.0/bin:${PATH}"' >> ~/.bashrc &&\
     sh ~/.bashrc
 RUN echo $PATH    
 RUN node --version && npm --version
