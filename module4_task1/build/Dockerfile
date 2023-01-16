@@ -10,7 +10,7 @@ RUN . "$NVM_DIR/nvm.sh" && nvm install 16.13.0 &&\
     . "$NVM_DIR/nvm.sh" && nvm alias default 16.13.0 &&\
     . "$NVM_DIR/nvm.sh" && nvm use default
 RUN echo $PATH
-ENV 'PATH="/root/.nvm/versions/node/v16.13.0/bin:${PATH}"' >> ~/.bashrc &&\
+ENV PATH="/root/.nvm/versions/node/v16.13.0/bin:${PATH}" >> ~/.bashrc &&\
     sh ~/.bashrc
 RUN echo $PATH    
 RUN node --version && npm --version
