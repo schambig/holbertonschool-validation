@@ -1,7 +1,7 @@
 # Implement the next steps for the actual Go-Hugo website's source code
 
 lint: ## Catch such errors without the need to compile or execute the application
-	@golangci-lint run
+	@golangci-lint run ./*.go
 
 build: lint ## Generate the website from markdown and config files in the 'dist/' folder
 	@hugo
