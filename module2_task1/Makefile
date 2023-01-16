@@ -1,6 +1,9 @@
 # Implement the next steps for the actual Go-Hugo website's source code
 
-build: ## Generate the website from markdown and config files in the 'dist/' folder
+lint: ## Catch such errors without the need to compile or execute the application
+	@golangci-lint run
+
+build: lint ## Generate the website from markdown and config files in the 'dist/' folder
 	@hugo
 	@go build -o awesome-api ./*.go
 
