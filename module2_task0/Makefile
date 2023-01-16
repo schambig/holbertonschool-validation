@@ -15,9 +15,9 @@ clean: ## Cleanup the content of the 'dist/' folder
 
 test: ## Ensure that it behaves as expected
 	@echo "# Test 1"
-	@curl http://localhost:9999 || true
+	@curl http://localhost:9999 || :
 	@echo "# Test 2"
-	@curl http://localhost:9999/health || true
+	@curl http://localhost:9999/health || :
 	@echo ""
 
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
