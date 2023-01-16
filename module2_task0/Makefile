@@ -14,11 +14,20 @@ clean: ## Cleanup the content of the 'dist/' folder
 	@rm -f awesome-api awesome.log || true
 
 test: ## Ensure that it behaves as expected
-	@echo "# Test 1"
-	@curl http://localhost:9999 || :
-	@echo "# Test 2"
-	@curl http://localhost:9999/health || :
-	@echo ""
+	@echo "# Test 1:"
+	@if curl http://localhost:9999; then \
+		echo "TESTOK" ;\
+	else \
+                echo "TESTFAILED" ;\
+	fi
+	@echo "# Test 2:"
+	@if curl http://localhost:9999/health; then \
+		echo ""; \
+		echo "TESTOK" ;\
+	else \
+		echo ""; \
+		echo "TESTFAILED" ;\
+	fi
 
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@rm -Rf content/posts/$(POST_NAME).md
