@@ -32,6 +32,11 @@ jobs:
       - name: Clone the repository
         uses: actions/checkout@v3
 
+      # Execute the setup.sh file
+      - name: Execute the setup.sh file
+        working-directory: module4_task1
+        run: ./setup.sh
+
       # Spin up a docker container and execute makefile targets
       - name: Create a docker image
         working-directory: module4_task1
@@ -51,4 +56,3 @@ jobs:
       - name: Execute make integration-tests target
         working-directory: module4_task1
         run: docker run --rm awesome:build make integration-tests
-        
