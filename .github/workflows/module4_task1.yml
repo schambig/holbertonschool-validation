@@ -32,17 +32,25 @@ jobs:
       - name: Clone the repository
         uses: actions/checkout@v3
 
-      # Spin up a docker container
-      - name: Spin up a docker container
-        run: |
-          cd module4_task1/
-          make build-docker
-          docker run -d -p8080:80 awesome:build
-          make clean
-          make lint
-          make build
-          make unit-tests
-          make integration-tests
+      # Spin up a docker container and execute makefile targets
+      - name: Create a docker image
+        working-directory: module4_task1
+        run: make build-docker
+      - name: Execute make clean target
+        working-directory: module4_task1
+        run: docker run --rm awesome:build make clean
+      - name: Execute make lint target
+        working-directory: module4_task1
+        run: docker run --rm awesome:build make lint
+      - name: Execute make build target
+        working-directory: module4_task1
+        run: docker run --rm awesome:build make built
+      - name: Execute make unit-tests target
+        working-directory: module4_task1
+        run: docker run --rm awesome:build make unit-tests
+      - name: Execute make integration-tests target
+        working-directory: module4_task1
+        run: docker run --rm awesome:build make integration-tests
 
       # Archive the zip file as artifact
       - name: Archive code coverage results
