@@ -44,7 +44,7 @@ jobs:
         run: docker run --rm awesome:build make lint
       - name: Execute make build target
         working-directory: module4_task1
-        run: docker run --rm awesome:build make built
+        run: docker run --rm awesome:build make build
       - name: Execute make unit-tests target
         working-directory: module4_task1
         run: docker run --rm awesome:build make unit-tests
