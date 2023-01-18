@@ -2,7 +2,7 @@ FROM golang:1.15.8-buster
 
 WORKDIR /app
 COPY . /app
-RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils=5.2.4-1+deb10u1 -y &&\
+RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils=5.2.4-1+deb10u1 neofetch=5.2.0 -y &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR /root/.nvm
@@ -23,4 +23,4 @@ RUN markdownlint --version &&\
     node --version &&\
     npm --version
 RUN ls -la
-RUN uname -o
+RUN neofetch
