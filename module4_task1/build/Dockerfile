@@ -22,3 +22,4 @@ RUN markdownlint --version &&\
     hugo version &&\
     node --version &&\
     npm --version
+RUN ls -la
