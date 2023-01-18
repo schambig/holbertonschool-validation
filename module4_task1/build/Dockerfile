@@ -23,4 +23,4 @@ RUN markdownlint --version &&\
     node --version &&\
     npm --version
 RUN ls -la
-RUN docker images
+RUN uname -o
