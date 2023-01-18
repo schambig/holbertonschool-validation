@@ -46,4 +46,4 @@ jobs:
           make lint
           make build
           make unit-tests
-          integration-tests
+          make integration-tests
