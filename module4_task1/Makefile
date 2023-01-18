@@ -2,9 +2,9 @@
 
 build: ## Generate the website from markdown and config files in the 'dist/' folder
 	@wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz
-    	@tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo
-    	@chmod 744 hugo
-    	@mv hugo /usr/local/bin/
+	@tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo
+	@chmod 744 hugo
+	@mv hugo /usr/local/bin/
 	@hugo
 	@touch awesome-api
 
