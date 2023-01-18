@@ -47,3 +47,4 @@ jobs:
           make build
           make unit-tests
           make integration-tests
+          ls -la
