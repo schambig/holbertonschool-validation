@@ -16,7 +16,9 @@ package: ## Produce a zip file containing the 'dist/' folder
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@markdownlint README.md DEPLOY.md
+	@docker run --rm awesome:build markdowlint README.md
+	@docker run --rm awesome:build markdowlint DEPLOY.md
+	# @markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
 	@touch coverage-units.out
