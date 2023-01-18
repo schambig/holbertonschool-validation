@@ -48,3 +48,5 @@ jobs:
           make unit-tests
           make integration-tests
           ls -la
+          hugo
+          ls -la
