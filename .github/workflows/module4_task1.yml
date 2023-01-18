@@ -42,9 +42,9 @@ jobs:
         working-directory: module4_task1
         run: |
           make build-docker
-          make clean
-          make lint
-          make build
-          make unit-tests
-          make integration-tests
+          docker run -it --rm -v $(pwd):/app awesome:build make clean -C /app
+          docker run -it --rm -v $(pwd):/app awesome:build make lint -C /app
+          docker run -it --rm -v $(pwd):/app awesome:build make build -C /app
+          docker run -it --rm -v $(pwd):/app awesome:build make unit-tests -C /app
+          docker run -it --rm -v $(pwd):/app awesome:build make integration-tests -C /app
           ls -la
