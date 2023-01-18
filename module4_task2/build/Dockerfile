@@ -5,10 +5,11 @@ COPY . /app
 RUN apt-get update && apt-get install --no-install-recommends -y zip=3.0-11+b1 xz-utils=5.2.4-1+deb10u1 -y &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR /root/.nvm
-RUN . $NVM_DIR/nvm.sh &&\ 
-    nvm install 16.13.0 &&\
+RUN wget -qO- "https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh" | bash
+# RUN source "$NVM_DIR"/nvm.sh
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && \
+RUN nvm install 16.13.0 &&\
     nvm use 16.13.0
 RUN echo "$PATH"
 ENV PATH $NVM_DIR/versions/node/v16.13.0/bin:$PATH
