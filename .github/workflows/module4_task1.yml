@@ -37,6 +37,9 @@ jobs:
         working-directory: module4_task1
         run: ./setup.sh
 
+      - name: Markdownlint
+        run: npm install -g markdownlint-cli
+
       # Spin up a docker container and execute makefile targets
       - name: Create a docker image
         working-directory: module4_task1
@@ -47,6 +50,4 @@ jobs:
           make build
           make unit-tests
           make integration-tests
-          ls -la
-          hugo
           ls -la
