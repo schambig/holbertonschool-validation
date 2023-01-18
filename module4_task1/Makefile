@@ -1,7 +1,7 @@
 .PHONY: build
 
 build: ## Generate the website from markdown and config files in the 'dist/' folder
-	@apt install ./hugo.deb
+	@apt install hugo
 	@hugo
 	@touch awesome-api
 
