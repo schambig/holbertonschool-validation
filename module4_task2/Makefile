@@ -42,7 +42,10 @@ validate: ## Validate the project
 build-docker: ## Define a docekr image
 	@docker build -t awesome:build -f ./build/Dockerfile .
 
+docker-tests: ## Test docker image
+	@pwd
+
 help: ## Show help usage
 	@echo "Usage: make <command>"
 	@echo "-----"
-	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -10
+	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -11
