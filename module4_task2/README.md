@@ -25,6 +25,7 @@ should be **absent** from the repo.
 - validate
 - help
 - build-docker
+- docker-tests
 
 ## Build Workflow
 
