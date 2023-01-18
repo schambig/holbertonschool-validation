@@ -18,6 +18,7 @@ RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_ext
     mv hugo /usr/local/bin/ &&\
     rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null
 RUN npm install -g markdownlint-cli@0.33.0 -y
+ENV PATH $PATH:$(npm bin -g)
 RUN markdownlint --version &&\
     hugo version &&\
     node --version &&\
