@@ -1,3 +1,5 @@
+.PHONY: build
+
 build: ## Generate the website from markdown and config files in the 'dist/' folder
 	@hugo
 	@touch awesome-api
