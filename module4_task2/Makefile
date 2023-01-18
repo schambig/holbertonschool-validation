@@ -26,6 +26,10 @@ lint: ## Check markdown files for any syntax mistake
 	@apt install nodejs -y
 	@npm install -g markdownlint-cli || true
 	@markdownlint README.md DEPLOY.md
+	@curl --silent --location https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -o hadolint
+	@mv hadolint /usr/local/bin/
+	@sudo chmod +x /usr/local/bin/hadolint
+	@hadolint build/Dockerfile
 
 unit-tests: ## Run unit-tets of the project
 	@touch coverage-units.out
