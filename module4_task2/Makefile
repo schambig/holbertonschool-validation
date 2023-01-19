@@ -28,7 +28,7 @@ lint: ## Check markdown files for any syntax mistake
 	@markdownlint README.md DEPLOY.md
 	@curl --silent --location https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -o hadolint
 	@mv hadolint /usr/local/bin/
-	@sudo chmod +x /usr/local/bin/hadolint
+	@chmod +x /usr/local/bin/hadolint
 	@hadolint build/Dockerfile
 
 unit-tests: ## Run unit-tets of the project
