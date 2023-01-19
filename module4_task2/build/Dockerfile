@@ -9,7 +9,8 @@ ENV NVM_DIR /root/.nvm
 RUN wget -qO- "https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh" | bash
 # RUN source "$NVM_DIR"/nvm.sh
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && \
-RUN nvm install 16.13.0 &&\
+RUN bash -c source "$VNM_DIR"/nvm.sh &&\
+    nvm install 16.13.0 &&\
     nvm use 16.13.0
 RUN echo "$PATH"
 ENV PATH $NVM_DIR/versions/node/v16.13.0/bin:$PATH
