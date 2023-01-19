@@ -16,13 +16,14 @@ RUN bash -c "source $NVM_DIR/nvm.sh && \
 #RUN echo "$PATH"
 ENV PATH $NVM_DIR/versions/node/v16.13.0/bin:$PATH
 RUN echo "$PATH"
-
+# Install hugo
 RUN wget -q https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_Linux-64bit.tar.gz &&\
     tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo &&\
     chmod 744 hugo &&\
     mv hugo /usr/local/bin/ &&\
-    rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null &&\
-    npm install -g markdownlint-cli@0.33.0 -y &&\
+    rm -f hugo_extended_0.109.0_Linux-64bit.tar.gz 2> /dev/null
+# Install markdownlint and check for right versions
+RUN npm install -g markdownlint-cli@0.33.0 -y &&\
     which markdownlint &&\
     markdownlint --version &&\
     hugo version &&\
