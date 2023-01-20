@@ -9,7 +9,7 @@
 
 # Install markdownlint and zip tools
 
-npm install -g markdownlint-cli -y
+# npm install -g markdownlint-cli -y
 
 # Generate a Go-Hugo website
 # make build
