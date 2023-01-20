@@ -49,3 +49,4 @@ jobs:
           docker run --rm -v $(pwd):/app awesome:build make integration-tests
           ls -la
           docker images
+          pwd
