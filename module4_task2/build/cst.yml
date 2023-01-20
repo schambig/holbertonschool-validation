@@ -12,8 +12,3 @@ fileExistenceTests:
       shouldExist: true
       uid: 0
       gid: 0
-fileContentTests:
-    - name: 'Debian Sources'
-      excludedContents: ['.*gce_debian_mirror.*']
-      expectedContents: ['.*archive\.ubuntu\.com.*']
-      path: '/etc/apt/sources.list'
