@@ -23,4 +23,5 @@ RUN npm install -g markdownlint-cli@0.33.0 -y &&\
 RUN markdownlint --version &&\
     hugo version &&\
     node --version &&\
-    npm --version
+    npm --version &&\
+    pwd
