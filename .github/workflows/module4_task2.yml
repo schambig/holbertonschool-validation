@@ -40,7 +40,9 @@ jobs:
       # Create a docker image then test it
       - name: Create and test awesome:build image
         working-directory: module4_task2
-        run: docker run --rm -v $(pwd):/app awesome:build make docker-tests
+        run: |
+          make build-docker
+          make docker-tests
 
       # Spin up a docker container and execute makefile targets
       - name: Create a docker image
