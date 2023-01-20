@@ -38,19 +38,20 @@ jobs:
         run: ./setup.sh
 
       # Create a docker image then test it
-      - name: Create and test awesome:build image
-        working-directory: module4_task2
-        run: |
-          make build-docker
-          echo "$PATH"
-          docker images
-          make docker-tests
+      # - name: Create and test awesome:build image
+        # working-directory: module4_task2
+        # run: |
+          # make build-docker
+          # echo "$PATH"
+          # docker images
+          # make docker-tests
 
       # Spin up a docker container and execute makefile targets
       - name: Create a docker image
         working-directory: module4_task2
         run: |
           make build-docker
+          make docker-tests
           docker run --rm -v $(pwd):/app awesome:build make clean
           docker run --rm -v $(pwd):/app awesome:build make lint
           docker run --rm -v $(pwd):/app awesome:build make build
