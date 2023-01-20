@@ -42,7 +42,8 @@ validate: ## Validate the project
 build-docker: ## Define a docekr image
 	@docker build -t awesome:build -f ./build/Dockerfile .
 
-docker-tests: ## Test docker image
+docker-tests: ## Create and test a docker image
+	@docker build -t awesome:build -f ./build/Dockerfile .
 	@curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
 	@chmod +x container-structure-test-linux-amd64
 	@mkdir -p $HOME/bin
