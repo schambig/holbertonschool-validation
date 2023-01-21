@@ -1,0 +1,14 @@
+---
+schemaVersion: '2.0.0'
+commandTests:
+    - name: 'apt-get'
+      command: 'apt-get'
+      args: ['help']
+      excludedError: ['.*FAIL.*']
+      expectedOutput: ['.*Usage.*']
+fileExistenceTests:
+    - name: 'Root'
+      path: '/'
+      shouldExist: true
+      uid: 0
+      gid: 0
