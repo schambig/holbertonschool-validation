@@ -41,6 +41,7 @@ jobs:
       - name: Create and test awesome:build image
         working-directory: module4_task2
         run: |
+          make lint
           make build-docker
           echo "$PATH"
           docker images
@@ -52,7 +53,6 @@ jobs:
         run: |
           make build-docker
           docker run --rm -v $(pwd):/app awesome:build make clean
-          docker run --rm -v $(pwd):/app awesome:build make lint
           docker run --rm -v $(pwd):/app awesome:build make build
           docker run --rm -v $(pwd):/app awesome:build make unit-tests
           docker run --rm -v $(pwd):/app awesome:build make integration-tests
