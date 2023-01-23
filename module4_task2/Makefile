@@ -21,11 +21,10 @@ package: ## Produce a zip file containing the 'dist/' folder
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	# @sudo apt-get update -y
-	@sudo apt-get install curl -y
+	@apt-get install curl -y
 	@curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
-	@sudo apt-get install nodejs -y
-	@sudo npm install -g markdownlint-cli || true
+	@apt-get install nodejs -y
+	@npm install -g markdownlint-cli || true
 	@markdownlint README.md DEPLOY.md
 	@curl --silent --location https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -o hadolint
 	@mv hadolint /usr/local/bin/
