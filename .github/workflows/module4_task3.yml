@@ -1,7 +1,7 @@
 ---
 # Safer Collaboration with Pull Requests
 
-name: module4_task2
+name: module4_task3
 
 # Controls when the workflow will run
 on:
@@ -9,7 +9,7 @@ on:
   push:
     branches: [master, main]
     # paths:
-    # - 'module4_task2/**'
+    # - 'module4_task3/**'
     tags:
       - '*.*.*'
   schedule:
@@ -34,12 +34,12 @@ jobs:
 
       # Execute the setup.sh file
       - name: Execute the setup.sh file
-        working-directory: module4_task2
+        working-directory: module4_task3
         run: ./setup.sh
 
       # Create a docker image then test it
       - name: Create and test awesome:build image
-        working-directory: module4_task2
+        working-directory: module4_task3
         run: |
           make build-docker
           echo "$PATH"
@@ -49,7 +49,7 @@ jobs:
 
       # Spin up a docker container and execute makefile targets
       - name: Create a docker image
-        working-directory: module4_task2
+        working-directory: module4_task3
         run: |
           make build-docker
           docker run --rm -v $(pwd):/app awesome:build make clean
