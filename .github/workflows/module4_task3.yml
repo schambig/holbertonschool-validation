@@ -1,0 +1,60 @@
+---
+# Safer Collaboration with Pull Requests
+
+name: module4_task2
+
+# Controls when the workflow will run
+on:
+  # Triggers of the workflow
+  push:
+    branches: [master, main]
+    # paths:
+    # - 'module4_task2/**'
+    tags:
+      - '*.*.*'
+  schedule:
+    - cron: '0 0 * * *'
+
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+
+# Jobs has eight steps
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-18.04
+
+    # Steps represent sequence of tasks that will be executed as par of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      # so the job can access it
+      - name: Clone the repository
+        uses: actions/checkout@v3
+
+      # Execute the setup.sh file
+      - name: Execute the setup.sh file
+        working-directory: module4_task2
+        run: ./setup.sh
+
+      # Create a docker image then test it
+      - name: Create and test awesome:build image
+        working-directory: module4_task2
+        run: |
+          make build-docker
+          echo "$PATH"
+          docker images
+          docker run --rm -v $(pwd):/app awesome:build make lint
+          make docker-tests
+
+      # Spin up a docker container and execute makefile targets
+      - name: Create a docker image
+        working-directory: module4_task2
+        run: |
+          make build-docker
+          docker run --rm -v $(pwd):/app awesome:build make clean
+          docker run --rm -v $(pwd):/app awesome:build make build
+          docker run --rm -v $(pwd):/app awesome:build make unit-tests
+          docker run --rm -v $(pwd):/app awesome:build make integration-tests
+          ls -la
+          docker images
