@@ -17,8 +17,9 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
 package: ## Produce a zip file containing the 'dist/' folder
-	@hugo
+	@make build
 	@zip -r awesome-website.zip dist/
+	@zip awesome-api.zip awesome-api
 
 lint: ## Check markdown files for any syntax mistake
 	@apt-get install curl -y
